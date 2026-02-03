@@ -380,7 +380,7 @@ def visualize_results(
 
 if __name__ == "__main__":
     SETTINGS = {
-        "filename": "FILENAMEHERE.out",  # .out file here
+        "filename": "PUTFILEHERE.out",  # .out file here
         # Detection mask / noise level
         "sigma": 2.0,  # lower > more candidates, higher > stricter
         # Depth range in trace indices
@@ -397,10 +397,9 @@ if __name__ == "__main__":
         "ground_margin": 5,  # extra traces to ignore after ground
     }
 
-    # Loop through all *.out files in the current directory.
-  
-        gpr_data_folder = Path(__file__).parent / "gpr data"
-        for input_file in gpr_data_folder.glob("**/*.out"):
+    # Loop through all *.out files in the gprdata folder.
+    gpr_data_folder = Path(__file__).parent / "gprdata"
+    for input_file in gpr_data_folder.glob("**/*.out"):
         print(f"Processing file {input_file.as_posix()}")
         SETTINGS["filename"] = input_file.as_posix()
 
