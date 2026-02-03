@@ -398,7 +398,7 @@ if __name__ == "__main__":
     }
 
     # Loop through all *.out files in the current directory.
-    for input_file in Path(os.getcwd()).glob('**.out'):
+    for input_file in Path(os.getcwd()).glob('**/*.out'):
         print(f"Processing file {input_file.as_posix()}")
         SETTINGS["filename"] = input_file.as_posix()
 
@@ -418,3 +418,4 @@ if __name__ == "__main__":
             binary_mask,
             ground_cutoff,
         )
+
