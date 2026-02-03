@@ -41,7 +41,7 @@ See also `pyproject.toml`.
 
 ## Usage
 1.  Open `main.py`.
-2.  Modify the `SETTINGS` dictionary in the `if __name__ == "__main__":` block to point to your `.out` or `.h5` file, or leave as-is and iterate trhough all *.out files in the current directory.
+2.  Modify the `SETTINGS` dictionary in the `if __name__ == "__main__":` block to point to your `.out` or `.h5` file, or leave as-is and iterate through all *.out files in the current directory.
 3.  Adjust detection parameters as needed:
     - `sigma`: Controls detection sensitivity.
     - `min_trace` / `max_trace`: Sets the depth range of interest.
