@@ -40,7 +40,7 @@ The script generates a summary image (`gpr_sideways_ground_removed.png`) contain
 See also `pyproject.toml`.
 
 ## Usage
-1.  **Create a folder named `gpr data`** in the root directory of the project (same level as `main.py`).
+1.  Create a folder named `gpr data` in the root directory of the project (same level as `main.py`).
 2.  Place your `.out` or `.h5` GPR data files in the `gpr data` folder.
 3.  Open `main.py`.
 4.  The script will automatically process all `*.out` files found in the `gpr data` folder and its subdirectories.
