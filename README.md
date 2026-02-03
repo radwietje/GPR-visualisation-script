@@ -1,7 +1,7 @@
 # GPR Hyperbola Detector
 
 ## Overview
-This project contains a Python script (`main.py`) designed to analyze Ground Penetrating Radar (GPR) data. It detects hyperbolic reflections—indicative of subsurface objects—within HDF5 data files. The tool is specialized for a "sideways" data orientation where depth is measured along the trace axis.
+This project contains a Python script (`main.py`) designed to analyze Ground Penetrating Radar (GPR) data. It detects hyperbolic reflections, indicative of subsurface objects, within HDF5 data files. The tool is specialized for a "sideways" data orientation where depth is measured along the trace axis.
 
 ## Functionality
 
