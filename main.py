@@ -373,14 +373,14 @@ def visualize_results(
     axes[1, 1].set_ylabel("Sample # (Position)")
 
     plt.tight_layout()
-    plt.savefig("gpr_sideways_ground_removed.png", dpi=150)
-    print("\nPlot saved to gpr_sideways_ground_removed.png")
+    plt.savefig("visual_gpr_data.png", dpi=150)
+    print("\nPlot saved to visual_gpr_data.png")
     plt.show()
 
 
 if __name__ == "__main__":
     SETTINGS = {
-        "filename": "scenario_2_041_metal_merged.out",  # .out file here
+        "filename": "FILENAMEHERE.out",  # .out file here
         # Detection mask / noise level
         "sigma": 2.0,  # lower > more candidates, higher > stricter
         # Depth range in trace indices
@@ -398,7 +398,9 @@ if __name__ == "__main__":
     }
 
     # Loop through all *.out files in the current directory.
-    for input_file in Path(os.getcwd()).glob('**/*.out'):
+  
+        gpr_data_folder = Path(__file__).parent / "gpr data"
+        for input_file in gpr_data_folder.glob("**/*.out"):
         print(f"Processing file {input_file.as_posix()}")
         SETTINGS["filename"] = input_file.as_posix()
 
@@ -418,4 +420,5 @@ if __name__ == "__main__":
             binary_mask,
             ground_cutoff,
         )
+
 
