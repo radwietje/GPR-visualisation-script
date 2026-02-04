@@ -1,3 +1,21 @@
+'''
+GPR Visualisation Script Usage
+==============================
+
+Single File Processing:
+----------------------
+1. Set the desired .out file path in SETTINGS["filename"] (e.g., "gprdata/yourfile.out").
+2. Ensure process_all = False (default).
+3. Run the script. Only the specified file will be processed.
+
+Multiple File Processing:
+------------------------
+1. Set process_all = True.
+2. The script will process all .out files in the gprdata folder, one by one.
+3. SETTINGS["filename"] will be overwritten for each file in the folder.
+
+Note: If SETTINGS["filename"] is set to "_", you will be prompted to specify a file for single-file mode.
+'''
 import os
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -380,7 +398,7 @@ def visualize_results(
 
 if __name__ == "__main__":
     SETTINGS = {
-        "filename": "_",  # .out file here
+        "filename": "gprdata/scenario_mm_035_sand_dry_merged.out",  # .out file here
         # Detection mask / noise level
         "sigma": 0.050,  # lower > more candidates, higher > stricter
         # Depth range in trace indices
@@ -397,27 +415,56 @@ if __name__ == "__main__":
         "ground_margin": 5,  # extra traces to ignore after ground
     }
 
-    # Loop through all *.out files in the gprdata folder.
-    gpr_data_folder = Path(__file__).parent / "gprdata"
-    for input_file in gpr_data_folder.glob("**/*.out"):
-        print(f"Processing file {input_file.as_posix()}")
-        SETTINGS["filename"] = input_file.as_posix()
+    # Set this to True to process all files in gprdata, or False to process only the specified file
+    process_all = False
 
-        (
-            reflections,
-            all_candidates,
-            data_gained,
-            binary_mask,
-            ground_cutoff,
-            col_profile_smooth,
-        ) = detect_reflections(SETTINGS["filename"], SETTINGS)
+    if process_all:
+        gpr_data_folder = Path(__file__).parent / "gprdata"
+        for input_file in gpr_data_folder.glob("**/*.out"):
+            print(f"Processing file {input_file.as_posix()}")
+            SETTINGS["filename"] = input_file.as_posix()
+            (
+                reflections,
+                all_candidates,
+                data_gained,
+                binary_mask,
+                ground_cutoff,
+                col_profile_smooth,
+            ) = detect_reflections(SETTINGS["filename"], SETTINGS)
 
-        visualize_results(
-            reflections,
-            all_candidates,
-            data_gained,
-            binary_mask,
-            ground_cutoff,
-        )
+            if data_gained is None:
+                print(f"No data loaded for {input_file}. Skipping.")
+                continue
+            visualize_results(
+                reflections,
+                all_candidates,
+                data_gained,
+                binary_mask,
+                ground_cutoff,
+            )
+    else:
+        if SETTINGS["filename"] == "_":
+            print("Please specify the input filename in SETTINGS['filename'] (e.g., 'gprdata/yourfile.out')")
+        else:
+            print(f"Processing file {SETTINGS['filename']}")
+            (
+                reflections,
+                all_candidates,
+                data_gained,
+                binary_mask,
+                ground_cutoff,
+                col_profile_smooth,
+            ) = detect_reflections(SETTINGS["filename"], SETTINGS)
+
+            if data_gained is None:
+                print("No data loaded. Please check the filename and try again.")
+            else:
+                visualize_results(
+                    reflections,
+                    all_candidates,
+                    data_gained,
+                    binary_mask,
+                    ground_cutoff,
+                )
 
 
