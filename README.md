@@ -42,7 +42,7 @@ See also `pyproject.toml`.
 ## Usage
 
 ### 1. Prepare your data
-Create a folder named `gprdata` in the root directory of the project (same level as `main.py`). Place your `.out` or `.h5` GPR data files in the `gprdata` folder.
+Place your `.out` or `.h5` GPR data files in the `gprdata` folder.
 
 ### 2. Choose processing mode
 Open `main.py` and select one of the following modes:
