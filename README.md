@@ -40,18 +40,17 @@ The script generates a summary image (`gpr_sideways_ground_removed.png`) contain
 See also `pyproject.toml`.
 
 ## Usage
-1.  Create a folder named `gprdata` in the root directory of the project (same level as `main.py`).
-2.  Place your `.out` or `.h5` GPR data files in the `gpr data` folder.
-3.  Open `main.py`.
-4.  The script will automatically process all `*.out` files found in the `gprdata` folder and its subdirectories.
-5.  Adjust detection parameters in the `SETTINGS` dictionary as needed:
+1.  Place your `.out` or `.h5` GPR data files in the `gprdata` folder.
+2.  Open `main.py`.
+3.  The script will automatically process all `*.out` files found in the `gprdata` folder and its subdirectories.
+4.  Adjust detection parameters in the `SETTINGS` dictionary as needed:
     - `sigma`: Controls detection sensitivity (lower = more candidates, higher = stricter).
     - `min_trace` / `max_trace`: Sets the depth range of interest (in trace indices).
     - `max_fit_error`: Determines how strictly candidates must resemble a hyperbola.
     - `ground_search_fraction`: Fraction of traces to search for ground reflection (default: 0.25).
     - `ground_margin`: Extra traces to ignore after ground detection (default: 5).
-6.  Run the script:
+5.  Run the script:
 ```bash
     python main.py
 ```
-7.  Check the console for detection logs and open the generated PNG file to view results.
+6.  Check the console for detection logs and open the generated PNG file to view results.
