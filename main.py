@@ -380,18 +380,18 @@ def visualize_results(
 
 if __name__ == "__main__":
     SETTINGS = {
-        "filename": "PUTFILEHERE.out",  # .out file here
+        "filename": "_",  # .out file here
         # Detection mask / noise level
-        "sigma": 2.0,  # lower > more candidates, higher > stricter
+        "sigma": 0.050,  # lower > more candidates, higher > stricter
         # Depth range in trace indices
         "min_trace": 300,
         "max_trace": 1800,
         # Intensity threshold (None = auto from candidates)
-        "intensity_T1": None,
+        "intensity_T1": 200,
         # Minimum width in traces (removes vertical clutter)
-        "min_trace_width": 100,
+        "min_trace_width": 150,
         # Maximum allowed hyperbola fit error
-        "max_fit_error": 80,
+        "max_fit_error": 150,
         # Ground detection controls
         "ground_search_fraction": 0.25,  # search for ground in first 25% of traces
         "ground_margin": 5,  # extra traces to ignore after ground
